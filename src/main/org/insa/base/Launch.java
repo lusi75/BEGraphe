@@ -54,21 +54,22 @@ public class Launch {
                 new DataInputStream(new BufferedInputStream(new FileInputStream(mapName))));
 
         // TODO: Read the graph.
-        Graph graph = null;
+        Graph graph = reader(graph);
 
         // Create the drawing:
         Drawing drawing = createDrawing();
 
         // TODO: Draw the graph on the drawing.
+        drawing = drawGraph(graph);
 
         // TODO: Create a PathReader.
-        PathReader pathReader = null;
+        PathReader pathReader = pathReader(graph);
 
         // TODO: Read the path.
-        Path path = null;
+        Path path = readPath(graph);
 
         // TODO: Draw the path.
-
+        path = drawPath(path);
     }
 
 }
