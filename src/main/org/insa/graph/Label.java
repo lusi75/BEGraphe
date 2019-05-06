@@ -44,7 +44,7 @@ public class Label{
         return marque;
     }
 
-    public void setMarque(boolean marque){
-        this.marque = marque;
+    public void setMarque(){
+        this.marque = true;
     }
 }
