@@ -1,17 +1,18 @@
 package org.insa.algo.shortestpath;
 import org.insa.algo.utils.*;
 import org.insa.graph.*;
-import java.awt.Label;
+//import org.insa.graph.Label;
 import java.util.*;
+import org.insa.algo.AbstractSolution.Status;
+import java.util.Iterator;
+
+
 
 public class DijkstraAlgorithm extends ShortestPathAlgorithm {
 
-    protected int SommetsVisites;
-    protected int Sommets;
-
+	
     public DijkstraAlgorithm(ShortestPathData data) {
         super(data);
-        this.SommetsVisites = 0;
     }
 
     /**Création du label*/
@@ -25,6 +26,7 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         ShortestPathSolution solution = null;
         Graph graph = data.getGraph();
         int taillegraph = graph.size();
+        boolean DestinationAtteinte = false;
 
         Label tablabel[] = new Label [taillegraph];
 
@@ -33,16 +35,20 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         Label debut = newLabel(data.getOrigin(),data);
 
         tablabel[debut.getNode().getId()] = debut; 
+        tas.insert(debut);
+        debut.setInTas();
+        debut.setCout(0);
+        
         notifyOriginProcessed(data.getOrigin());
 
         while(!tas.isEmpty() && !DestinationAtteinte){
-            Label currentLabel = tas.deletMin();
+            Label currentLabel = tas.deleteMin();
             currentLabel.setMarque();
             if(currentLabel.getNode() == data.getDestination()){
                 DestinationAtteinte = true;
             }
             else{
-                Iterator<Arc> arc = currentLabel.getNode().Iterator();
+                Iterator<Arc> arc = currentLabel.getNode().iterator();
                 while(arc.hasNext()){
                     Arc arcSuiv = arc.next();
 
@@ -60,13 +66,38 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
                     }
 
                     if(!labelNodeSuiv.isMarque()){
-                        if(labelNodeSuiv.getCout())
+                        if((labelNodeSuiv.getCout()>(currentLabel.getCout() + data.getCost(arcSuiv))) || (labelNodeSuiv.getCout() == Float.POSITIVE_INFINITY)){
+                            labelNodeSuiv.setCout(currentLabel.getCout() + data.getCost(arcSuiv));
+                            labelNodeSuiv.setArc_pere(arcSuiv); 
+                            tablabel[labelNodeSuiv.getNode().getId()]=labelNodeSuiv;
+                            if(labelNodeSuiv.getInTas())
+                                tas.remove(labelNodeSuiv);
+                            else   
+                                labelNodeSuiv.setInTas();
+                            tas.insert(labelNodeSuiv);
+                        }
                     }
                 }
             }
         }
 
-
+        if(!DestinationAtteinte)
+            solution = new ShortestPathSolution(data, Status.INFEASIBLE);
+        else{
+            ArrayList<Arc> arcs = new ArrayList<>();
+            Node destination = data.getDestination();
+            Label lab = tablabel[destination.getId()];
+            Arc arc = lab.getArc_pere();
+            arcs.add(arc);
+            Node precedent = arc.getOrigin();
+            while(precedent.getId() != data.getOrigin().getId()){
+                lab = tablabel[precedent.getId()];
+                arc =lab.getArc_pere();
+                arcs.add(arc);
+                Collections.reverse(arcs);
+            }
+            solution  = new ShortestPathSolution(data, Status.OPTIMAL, new Path(graph,arcs));
+        }
         return solution;
     }
 
