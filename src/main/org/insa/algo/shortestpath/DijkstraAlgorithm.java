@@ -37,7 +37,7 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         tablabel[debut.getNode().getId()] = debut; 
         tas.insert(debut);
         debut.setInTas();
-        debut.setCout(0);
+        debut.setCout(0,data);
         
         notifyOriginProcessed(data.getOrigin());
 
@@ -66,8 +66,8 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
                     }
 
                     if(!labelNodeSuiv.isMarque()){
-                        if((labelNodeSuiv.getCout()>(currentLabel.getCout() + data.getCost(arcSuiv))) || (labelNodeSuiv.getCout() == Float.POSITIVE_INFINITY)){
-                            labelNodeSuiv.setCout(currentLabel.getCout() + data.getCost(arcSuiv));
+                        if((labelNodeSuiv.getCoutTotal()>(currentLabel.getCoutTotal() + data.getCost(arcSuiv))) || (labelNodeSuiv.getCoutTotal() == Float.POSITIVE_INFINITY)){
+                            labelNodeSuiv.setCout(currentLabel.getCoutTotal() + data.getCost(arcSuiv),data);
                             labelNodeSuiv.setArc_pere(arcSuiv); 
                             tablabel[labelNodeSuiv.getNode().getId()]=labelNodeSuiv;
                             if(labelNodeSuiv.getInTas())

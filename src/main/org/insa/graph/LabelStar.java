@@ -1,19 +1,20 @@
 package org.insa.graph;
-import org.insa.graph.Node;
+import org.insa.algo.shortestpath.ShortestPathData;
+//import org.insa.graph.*;
 
-public class LabelStar extends Label{
-	private LabelStar(Node sommet_courant) {
+public class LabelStar extends Label implements Comparable<Label>{
+	
+	
+	public LabelStar(Node sommet_courant) {
 		super(sommet_courant);
-		
 	}
+	@Override
+	public void setCoutTotal(ShortestPathData data){
+        this.cout_total = cout + sommet_courant.getPoint().distanceTo(data.getDestination().getPoint());
+    }
 	
-	public double setEstimation(ShortestPathData data) {
-		Point point;
-		point = sommet_courant.getPoint();
-		this.estimation = distanceTo(data.getDestination().getPoint());
-	}
-	
-	public double getEstimation() {
-		return(this.estimaion)
+	@Override
+    public void setCout(double cout, ShortestPathData data){
+        this.cout = cout;
 	}
 }

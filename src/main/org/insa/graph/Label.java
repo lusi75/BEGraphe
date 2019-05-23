@@ -1,36 +1,34 @@
 package org.insa.graph;
+import org.insa.algo.shortestpath.ShortestPathData;
 import org.insa.graph.Node;
 
 public class Label implements Comparable<Label>{
-    private Node sommet_courant;
+    protected Node sommet_courant;
 
-    private boolean marque;
+    protected boolean marque;
 
-    private double cout;
+    protected double cout;
+
+    protected Arc arc_pere;
+
+    protected boolean inTas;
     
-    private double estimation;
-    
-    private double cout_total;
-
-    private Arc arc_pere;
-
-    private boolean inTas;
+    protected double cout_total;
 
     public Label(Node sommet_courant){
         this.sommet_courant = sommet_courant;
         this.marque = false;
         this.cout = Float.POSITIVE_INFINITY;
+        this.cout_total = Float.POSITIVE_INFINITY;
         this.arc_pere = null;
         this.inTas = false;
-        this.estimation = 0;
-        this.cout_total = 0;
     }
     
     public int compareTo(Label autre) {
     	int resultat;
-    	if (this.cout_total < autre.getCout() + autre.estimation)
+    	if (this.cout_total < autre.getCoutTotal())
     		resultat = -1;
-    	else if(this.cout_total == autre.cout_total)
+    	else if(this.cout_total == autre.getCoutTotal())
     		resultat = 0;
     	else
     		resultat = 1;
@@ -49,20 +47,9 @@ public class Label implements Comparable<Label>{
         return cout;
     }
 
-    public void setCout(double cout){
+    public void setCout(double cout, ShortestPathData data){
         this.cout = cout;
-    }
-    
-    public double getEstimation(){
-    	return this.estimation;
-    }
-    
-    public void setEstimation() {
-    	this.estimation = 0;
-    }
-    
-    public void setTotalCost(double total) {
-    	this.cout_total = total; 
+        this.cout_total = cout;
     }
 
     public Arc getArc_pere(){
@@ -89,10 +76,11 @@ public class Label implements Comparable<Label>{
         this.inTas = true;
     }
     
-    public void setTotalCost() {
-    	this.cout_total = this.cout + this.estimation;
+    public double getCoutTotal() {
+    	return this.cout_total;
     }
-    public double getTotalCost() {
-    	return cout_total;
+    
+    public void setCoutTotal(ShortestPathData data) {
+    	this.cout_total = cout;
     }
 }
