@@ -7,6 +7,10 @@ public class Label implements Comparable<Label>{
     private boolean marque;
 
     private double cout;
+    
+    private double estimation;
+    
+    private double cout_total;
 
     private Arc arc_pere;
 
@@ -18,13 +22,15 @@ public class Label implements Comparable<Label>{
         this.cout = Float.POSITIVE_INFINITY;
         this.arc_pere = null;
         this.inTas = false;
+        this.estimation = 0;
+        this.cout_total = 0;
     }
     
     public int compareTo(Label autre) {
     	int resultat;
-    	if (this.getCout() < autre.getCout())
+    	if (this.cout_total < autre.getCout() + autre.estimation)
     		resultat = -1;
-    	else if(this.getCout() == autre.getCout())
+    	else if(this.cout_total == autre.cout_total)
     		resultat = 0;
     	else
     		resultat = 1;
@@ -43,8 +49,20 @@ public class Label implements Comparable<Label>{
         return cout;
     }
 
-    public double setCout(double cout){
-        return this.cout = cout;
+    public void setCout(double cout){
+        this.cout = cout;
+    }
+    
+    public double getEstimation(){
+    	return this.estimation;
+    }
+    
+    public void setEstimation() {
+    	this.estimation = 0;
+    }
+    
+    public void setTotalCost(double total) {
+    	this.cout_total = total; 
     }
 
     public Arc getArc_pere(){
@@ -69,5 +87,12 @@ public class Label implements Comparable<Label>{
 
     public void setInTas(){
         this.inTas = true;
+    }
+    
+    public void setTotalCost() {
+    	this.cout_total = this.cout + this.estimation;
+    }
+    public double getTotalCost() {
+    	return cout_total;
     }
 }
