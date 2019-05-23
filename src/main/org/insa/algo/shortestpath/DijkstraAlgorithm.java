@@ -44,6 +44,7 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         while(!tas.isEmpty() && !DestinationAtteinte){
             Label currentLabel = tas.deleteMin();
             currentLabel.setMarque();
+            notifyNodeMarked(currentLabel.getNode());
             if(currentLabel.getNode() == data.getDestination()){
                 DestinationAtteinte = true;
             }
@@ -90,6 +91,7 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
             Arc arc = lab.getArc_pere();
             arcs.add(arc);
             Node precedent = arc.getOrigin();
+            notifyNodeReached(destination);
             while(precedent.getId() != data.getOrigin().getId()){
                 lab = tablabel[precedent.getId()];
                 arc =lab.getArc_pere();
