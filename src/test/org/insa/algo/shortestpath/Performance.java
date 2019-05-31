@@ -6,7 +6,7 @@ public class Performance {
 	@Test
 	public void Compare() throws Exception {
 		
-		System.out.println("#####----- Test de validité sur une carte-----######");
+		System.out.println("#####----- Test de performance sur une carte-----######");
 		
 		DijkstraTestWithMap testD = new  DijkstraTestWithMap();
 		long startTime = System.nanoTime();    
@@ -71,7 +71,7 @@ public class Performance {
 		System.out.println();
 	    
 	    
-	    System.out.println("#####----- Carte : GHADELOUPE ---------------------------######");
+	    System.out.println("#####----- Carte : GUADELOUPE ---------------------------######");
 		System.out.println();
 		System.out.println("----- Cas d'un chemin simple ------");
 		origine = 9922;
