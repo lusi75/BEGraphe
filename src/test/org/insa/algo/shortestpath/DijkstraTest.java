@@ -64,7 +64,7 @@ public class DijkstraTest {
 
 	}
 
-	//@Test
+	@Test
 	public void testDoRun() {
 		System.out.println("#####-----Test de validité avec oracle sur un exemple simple-----#####");
 		/* Tableau contenant les arcs*/
@@ -124,17 +124,17 @@ public class DijkstraTest {
 		System.out.println();
 	}
 
-	//@Test
-	public void testDoScenarioDistanceHG() throws Exception {
+	@Test
+	public void testDoScenarioDistanceIDF() throws Exception {
 		//String mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/haute-garonne.mapgr";
-		String mapName = "/Users/rafael/Desktop/Maps/haute-garonne.mapgr"; //test en local
+		String mapName = "/Users/rafael/Desktop/Maps/ile-de-france.mapgr"; //test en local
 		
 		DijkstraTestWithMap test = new  DijkstraTestWithMap();
 		int origine;
 		int destination;
 		
 		System.out.println("#####----- Test de validité avec oracle sur une carte-----######");
-		System.out.println("#####----- Carte : Haute-Garonne -------------------------######");
+		System.out.println("#####----- Carte : Ile de France -------------------------######");
 		System.out.println("#####----- Mode : DISTANCE -------------------------------######");
 		System.out.println();
 		
@@ -144,8 +144,8 @@ public class DijkstraTest {
 		test.testScenario(mapName, 1,origine,destination);    
 		
 		System.out.println("----- Cas d'un chemin simple ------");
-		origine = 38926;
-		destination = 59015;
+		origine = 301615;
+		destination = 89900;
 		test.testScenario(mapName, 1,origine,destination);    	
 	
 		
@@ -153,36 +153,36 @@ public class DijkstraTest {
 		System.out.println("----- Origine : N'existe pas ----------");
 		System.out.println("----- Destination : Existe ------------");
 		origine = -1;
-		destination = 59015;
+		destination = 89900;
 		test.testScenario(mapName, 1,origine,destination);    	
 
 		System.out.println("----- Cas de sommets inexistants ------");
 		System.out.println("----- Origine : Existe ----------------");
 		System.out.println("----- Destination : N'existe pas ------");
-		origine = 38926;
-		destination = 200000;
+		origine = 301615;
+		destination = -1;
 		test.testScenario(mapName, 1,origine,destination);    	
 		
 		System.out.println("----- Cas de sommets inexistants ------");
 		System.out.println("----- Origine : N'existe pas ----------");
 		System.out.println("----- Destination : N'existe pas ------");
 		origine = -1;
-		destination = 200000;
+		destination = -2;
 		test.testScenario(mapName, 1,origine,destination);    	
 	}
 
 	
-	//@Test
-	public void testDoScenarioTempsHG() throws Exception {
+	@Test
+	public void testDoScenarioTempsIDF() throws Exception {
 		//String mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/haute-garonne.mapgr";
-		String mapName = "/Users/rafael/Desktop/Maps/haute-garonne.mapgr";
+		String mapName = "/Users/rafael/Desktop/Maps/ile-de-france.mapgr";
 
 		DijkstraTestWithMap test = new  DijkstraTestWithMap();
 		int origine;
 		int destination;
 		
 		System.out.println("#####----- Test de validité avec oracle sur une carte-----######");
-		System.out.println("#####----- Carte : Haute-Garonne -------------------------######");
+		System.out.println("#####----- Carte : Ile de France -------------------------######");
 		System.out.println("#####----- Mode : TEMPS ----------------------------------######");
 		System.out.println();
 		
@@ -192,33 +192,33 @@ public class DijkstraTest {
 		test.testScenario(mapName, 0,origine,destination);    
 		
 		System.out.println("----- Cas d'un chemin simple ------");
-		origine = 38926;
-		destination = 59015;
+		origine = 301615;
+		destination = 89900;
 		test.testScenario(mapName, 0,origine,destination);    	
 	
 		System.out.println("----- Cas de sommets inexistants ------");
 		System.out.println("----- Origine : N'existe pas ----------");
 		System.out.println("----- Destination : Existe ------------");
 		origine = -1;
-		destination = 59015;
+		destination = 89900;
 		test.testScenario(mapName, 0,origine,destination);    	
 
 		System.out.println("----- Cas de sommets inexistants ------");
 		System.out.println("----- Origine : Existe ----------------");
 		System.out.println("----- Destination : N'existe pas ------");
-		origine = 38926;
-		destination = 200000;
+		origine = 301615;
+		destination = -1;
 		test.testScenario(mapName, 0,origine,destination);    	
 		
 		System.out.println("----- Cas de sommets inexistants ------");
 		System.out.println("----- Origine : N'existe pas ----------");
 		System.out.println("----- Destination : N'existe pas ------");
 		origine = -1;
-		destination = 200000;
+		destination = -2;
 		test.testScenario(mapName, 0,origine,destination);    	
 	}
 
-	//@Test
+	@Test
 	public void testDoScenarioDistanceINSA() throws Exception {
 
 		//String mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/insa.mapgr";
@@ -234,38 +234,38 @@ public class DijkstraTest {
 		System.out.println();
 		
 		System.out.println("----- Cas d'un chemin nul ------");
-		origine = 300 ;
-		destination = 300;
+		origine = 257 ;
+		destination = 257;
 		test.testScenario(mapName, 1,origine,destination);    
 		
 		System.out.println("----- Cas d'un chemin simple ------");
-		origine = 607;
-		destination = 857;
+		origine = 885;
+		destination = 257;
 		test.testScenario(mapName, 1,origine,destination);    	
 	
 		System.out.println("----- Cas de sommets inexistants ------");
 		System.out.println("----- Origine : N'existe pas ----------");
 		System.out.println("----- Destination : Existe ------------");
-		origine = 2000;
-		destination = 857;
+		origine = -1;
+		destination = 257;
 		test.testScenario(mapName, 1,origine,destination);    	
 
 		System.out.println("----- Cas de sommets inexistants ------");
 		System.out.println("----- Origine : Existe ----------------");
 		System.out.println("----- Destination : N'existe pas ------");
-		origine = 607;
-		destination = 200000;
+		origine = 885;
+		destination = -1;
 		test.testScenario(mapName, 1,origine,destination);    	
 		
 		System.out.println("----- Cas de sommets inexistants ------");
 		System.out.println("----- Origine : N'existe pas ----------");
 		System.out.println("----- Destination : N'existe pas ------");
-		origine = 2000;
-		destination = 2000;
+		origine = -1;
+		destination = -2;
 		test.testScenario(mapName, 1,origine,destination);   
 	}
 
-	//@Test
+	@Test
 	public void testDoScenarioTempsINSA() throws Exception {
 		//String mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/insa.mapgr";
 		String mapName = "/Users/rafael/Desktop/Maps/insa.mapgr";
@@ -280,38 +280,38 @@ public class DijkstraTest {
 		System.out.println();
 		
 		System.out.println("----- Cas d'un chemin nul ------");
-		origine = 300 ;
-		destination = 300;
+		origine = 257 ;
+		destination = 257;
 		test.testScenario(mapName, 0,origine,destination);    
 		
 		System.out.println("----- Cas d'un chemin simple ------");
-		origine = 607;
-		destination = 857;
+		origine = 885;
+		destination = 257;
 		test.testScenario(mapName, 0,origine,destination);    	
 	
 		System.out.println("----- Cas de sommets inexistants ------");
 		System.out.println("----- Origine : N'existe pas ----------");
 		System.out.println("----- Destination : Existe ------------");
-		origine = 2000;
-		destination = 857;
+		origine = -1;
+		destination = 257;
 		test.testScenario(mapName, 0,origine,destination);    	
 
 		System.out.println("----- Cas de sommets inexistants ------");
 		System.out.println("----- Origine : Existe ----------------");
 		System.out.println("----- Destination : N'existe pas ------");
-		origine = 607;
-		destination = 200000;
+		origine = 885;
+		destination = -1;
 		test.testScenario(mapName, 0,origine,destination);    	
 		
 		System.out.println("----- Cas de sommets inexistants ------");
 		System.out.println("----- Origine : N'existe pas ----------");
 		System.out.println("----- Destination : N'existe pas ------");
-		origine = 2000;
-		destination = 2000;
+		origine = -1;
+		destination = -2;
 		test.testScenario(mapName, 0,origine,destination);   
 	}
 	
-	//@Test
+	@Test
 	public void testDoScenarioDistanceCarreDense() throws Exception {
 		//String mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/carre-dense.mapgr";
 		String mapName = "/Users/rafael/Deskop/Maps/carre-dense.mapgr";
@@ -327,12 +327,12 @@ public class DijkstraTest {
 		System.out.println();
 		
 		System.out.println("----- Cas d'un chemin simple ------");
-		origine = 0;
-		destination = 204097;
+		origine = 62670;
+		destination = 201771;
 		test.testScenario(mapName, 1,origine,destination);    		
 	}
 
-	//@Test
+	@Test
 	public void testDoScenarioTempsCarreDense() throws Exception {
 		//String mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/carre-dense.mapgr";
 		String mapName = "/Users/rafael/Desktop/Maps/carre-dense.mapgr";
@@ -347,107 +347,105 @@ public class DijkstraTest {
 		System.out.println();
 
 		System.out.println("----- Cas d'un chemin simple ------");
-		origine = 0;
-		destination = 204097;
+		origine = 62670;
+		destination = 201771;
 		test.testScenario(mapName, 0,origine,destination);    			
 	}
 	
 	
-	//@Test
-	public void testDoScenarioDistanceGuadeloupe() throws Exception {
+	@Test
+	public void testDoScenarioDistanceBretagne() throws Exception {
 		//String mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/guadeloupe.mapgr";
-		String mapName = "/Users/rafael/Desktop/Maps/guadeloupe.mapgr";
+		String mapName = "/Users/rafael/Desktop/Maps/bretagne.mapgr";
 
 		DijkstraTestWithMap test = new  DijkstraTestWithMap();
 		int origine;
 		int destination;
 		
 		System.out.println("#####----- Test de validité avec oracle sur une carte-----######");
-		System.out.println("#####----- Carte : GUADELOUPE ----------------------------######");
+		System.out.println("#####----- Carte : Bretagne ----------------------------######");
 		System.out.println("#####----- Mode : DISTANCE -------------------------------######");
 		System.out.println();
 	
 		System.out.println("----- Cas d'un chemin simple ------");
-		origine = 9922;
-		destination = 34328;
+		origine = 316635;
+		destination = 254601;
 		test.testScenario(mapName, 1,origine,destination);    	
 	
 		System.out.println("----- Cas de sommets non connexes ------");
-		origine = 9950;
-		destination = 15860;
+		origine = 435720;
+		destination = 201602;
 		test.testScenario(mapName, 1,origine,destination);    	
 
 	}
 	
-	//@Test
-	public void testDoScenarioTempsGuadeloupe() throws Exception {
+	@Test
+	public void testDoScenarioTempsBretagne() throws Exception {
 		//String mapName = "C:/Users/Utilisateur/Desktop/3A MIC/Kimi/graphe/Maps/guadeloupe.mapgr";
-		String mapName = "/Users/rafael/Desktop/Maps/guadeloupe.mapgr";
+		String mapName = "/Users/rafael/Desktop/Maps/bretagne.mapgr";
 
 		DijkstraTestWithMap test = new  DijkstraTestWithMap();
 		int origine;
 		int destination;
 		
 		System.out.println("#####----- Test de validité avec oracle sur une carte-----######");
-		System.out.println("#####----- Carte : GUADELOUPE ----------------------------######");
+		System.out.println("#####----- Carte : Bretagne ----------------------------######");
 		System.out.println("#####----- Mode : TEMPS ----------------------------------######");
 		System.out.println();
 	
 		System.out.println("----- Cas d'un chemin simple ------");
-		origine = 9922;
-		destination = 34328;
-		test.testScenario(mapName, 0,origine,destination);    	
+		origine = 316635;
+		destination = 254601;
+		test.testScenario(mapName, 1,origine,destination);    	
 	
 		System.out.println("----- Cas de sommets non connexes ------");
-		origine = 9950;
-		destination = 15860;
-		test.testScenario(mapName, 0,origine,destination);    	
-
+		origine = 435720;
+		destination = 201602;
+		test.testScenario(mapName, 0,origine,destination);
 	}
 
 	@Test
-	public void testDoScenarioMinTempsDistHG() throws Exception {
+	public void testDoScenarioMinTempsDistIDF() throws Exception {
 		//String mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/haute-garonne.mapgr";
-		String mapName = "/Users/rafael/Desktop/Maps/haute-garonne.mapgr";
+		String mapName = "/Users/rafael/Desktop/Maps/ile-de-france.mapgr";
 		
 		DijkstraTestWithMap test = new  DijkstraTestWithMap();
 		int origine;
 		int destination;
 		
 		System.out.println("#####----- Test de validité sans oracle sur une carte-----######");
-		System.out.println("#####----- Carte : Haute-Garonne -------------------------######");
+		System.out.println("#####----- Carte : Ile de France -------------------------######");
 		System.out.println();
 
 		System.out.println("----- Cas d'un chemin nul ------");
 		origine = 0 ;
 		destination = 0;
-		test.testScenarioSansOracle(mapName,origine,destination);   
+		test.testScenario(mapName, 0,origine,destination);    
 		
 		System.out.println("----- Cas d'un chemin simple ------");
-		origine = 38926;
-		destination = 59015;
-		test.testScenarioSansOracle(mapName,origine,destination);    	
+		origine = 301615;
+		destination = 89900;
+		test.testScenario(mapName, 0,origine,destination);    	
 	
-		
 		System.out.println("----- Cas de sommets inexistants ------");
 		System.out.println("----- Origine : N'existe pas ----------");
 		System.out.println("----- Destination : Existe ------------");
 		origine = -1;
-		destination = 59015;
-		test.testScenarioSansOracle(mapName,origine,destination);   	
+		destination = 89900;
+		test.testScenario(mapName, 0,origine,destination);    	
 
 		System.out.println("----- Cas de sommets inexistants ------");
 		System.out.println("----- Origine : Existe ----------------");
 		System.out.println("----- Destination : N'existe pas ------");
-		origine = 38926;
-		destination = 200000;
-		test.testScenarioSansOracle(mapName,origine,destination);    	
+		origine = 301615;
+		destination = -1;
+		test.testScenario(mapName, 0,origine,destination);    	
 		
 		System.out.println("----- Cas de sommets inexistants ------");
 		System.out.println("----- Origine : N'existe pas ----------");
 		System.out.println("----- Destination : N'existe pas ------");
 		origine = -1;
-		destination = 200000; 
+		destination = -2;
 		test.testScenarioSansOracle(mapName,origine,destination);   
 	}
 
@@ -465,34 +463,32 @@ public class DijkstraTest {
 		System.out.println();
 
 		System.out.println("----- Cas d'un chemin simple ------");
-		origine = 0;
-		destination = 100052;
+		origine = 62670;
+		destination = 201771;
 		test.testScenarioSansOracle(mapName,origine,destination);    
 	}
 	
 	@Test
-	public void testDoScenarioMinTempsDistGuadeloupe() throws Exception {
+	public void testDoScenarioMinTempsDistBretagne() throws Exception {
 		//String mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/guadeloupe.mapgr";
-		String mapName = "/Users/rafael/Desktop/Maps/guadeloupe.mapgr";
+		String mapName = "/Users/rafael/Desktop/Maps/bretagne.mapgr";
 
 		DijkstraTestWithMap test = new  DijkstraTestWithMap();
 		int origine;
 		int destination;
 		
 		System.out.println("#####----- Test de validité sans oracle sur une carte-----######");
-		System.out.println("#####----- Carte : GUADELOUPE ----------------------------######");
+		System.out.println("#####----- Carte : Bretagne ----------------------------######");
 		System.out.println();
 	
 		System.out.println("----- Cas d'un chemin simple ------");
-		origine = 9922;
-		destination = 34328;
-		test.testScenarioSansOracle(mapName,origine,destination);    	
+		origine = 316635;
+		destination = 254601;
+		test.testScenario(mapName, 1,origine,destination);    	
 	
 		System.out.println("----- Cas de sommets non connexes ------");
-		origine = 9950;
-		destination = 15860;
+		origine = 435720;
+		destination = 201602;
 		test.testScenarioSansOracle(mapName,origine,destination);    
 	}
-	
-
 }
