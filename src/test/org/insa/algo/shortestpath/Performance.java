@@ -22,8 +22,8 @@ public class Performance {
 		System.out.println("----- Cas d'un chemin simple ------");
 		int origine = 48128;
 		int destination = 132978;
-		//String mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/haute-garonne.mapgr";
-		String mapName = "/Users/rafael/Desktop/Maps/haute-garonne.mapgr";
+		String mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/haute-garonne.mapgr";
+		//String mapName = "/Users/rafael/Desktop/Maps/haute-garonne.mapgr";
 		
 		float moyenne = 0;
 		for(int i =0;i<10;i++) {
@@ -49,8 +49,8 @@ public class Performance {
 		System.out.println("----- Cas d'un chemin simple ------");
 		origine = 0;
 		destination = 20000;
-		//mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/carre-dense.mapgr";
-		mapName = "/Users/rafael/Desktop/Maps/carre-dense.mapgr";
+		mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/carre-dense.mapgr";
+		//mapName = "/Users/rafael/Desktop/Maps/carre-dense.mapgr";
 		
 		moyenne=0;
 		for(int i =0;i<2;i++) {
@@ -76,8 +76,8 @@ public class Performance {
 		System.out.println("----- Cas d'un chemin simple ------");
 		origine = 9922;
 		destination = 30000;
-		//mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/guadeloupe.mapgr";
-		mapName = "/Users/rafael/Desktop/Maps/guadeloupe.mapgr";
+		mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/guadeloupe.mapgr";
+		//mapName = "/Users/rafael/Desktop/Maps/guadeloupe.mapgr";
 		
 		moyenne = 0;
 		for(int i =0;i<10;i++) {
